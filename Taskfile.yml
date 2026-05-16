@@ -1,0 +1,6 @@
+version: "3"
+
+tasks:
+  start:
+    desc: "Start server"
+    cmd: "bundle exec rackup"
