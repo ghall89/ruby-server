@@ -1,0 +1,15 @@
+!!! 5
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %title= "Ruby Server"
+    %link{rel: "stylesheet", href: "/assets/application.css"}
+  %body
+    %nav.navbar.navbar-expand-lg.bg-body-tertiary
+      .container-fluid
+        %a.navbar-brand{href: "/"} Ruby Server
+        - if current_user
+          %form.d-flex{action: "/logout", method: "post"}
+            %button.btn.btn-outline-secondary{type: "submit"} Log out
+    != yield

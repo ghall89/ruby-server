@@ -1,0 +1,18 @@
+%section.container.mt-5
+  .row.justify-content-center
+    .col-md-4
+      %h2.mb-4 Sign up
+      - if error
+        .alert.alert-danger= error
+      %form{action: "/signup", method: "post"}
+        .mb-3
+          %label.form-label{for: "username"} Username
+          %input.form-control{type: "text", id: "username", name: "username", autocomplete: "username", required: true}
+        .mb-3
+          %label.form-label{for: "password"} Password
+          %input.form-control{type: "password", id: "password", name: "password", autocomplete: "new-password", required: true}
+          %small.form-text.text-muted Must be at least 8 characters
+        %button.btn.btn-primary.w-100{type: "submit"} Sign up
+      %p.mt-3.text-center
+        Already have an account?
+        %a{href: "/login"} Log in
