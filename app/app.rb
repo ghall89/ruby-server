@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "sinatra"
-require "haml"
 require "securerandom"
 require_relative "database"
 require_relative "models/user"

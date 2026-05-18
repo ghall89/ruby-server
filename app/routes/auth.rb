@@ -3,7 +3,7 @@
 class App
   get "/login" do
     redirect "/" if current_user
-    haml :login, locals: { error: nil }
+    erb :login, locals: { error: nil }
   end
 
   post "/login" do
@@ -25,13 +25,13 @@ class App
 
       redirect "/"
     else
-      haml :login, locals: { error: "Invalid username or password" }
+      erb :login, locals: { error: "Invalid username or password" }
     end
   end
 
   get "/signup" do
     redirect "/" if current_user
-    haml :signup, locals: { error: nil }
+    erb :signup, locals: { error: nil }
   end
 
   post "/signup" do
@@ -39,15 +39,15 @@ class App
     password = params[:password].to_s
 
     if username.empty? || password.empty?
-      return haml :signup, locals: { error: "Username and password are required" }
+      return erb :signup, locals: { error: "Username and password are required" }
     end
 
     if password.length < 8
-      return haml :signup, locals: { error: "Password must be at least 8 characters" }
+      return erb :signup, locals: { error: "Password must be at least 8 characters" }
     end
 
     if User.find_by_username(username)
-      return haml :signup, locals: { error: "Username already taken" }
+      return erb :signup, locals: { error: "Username already taken" }
     end
 
     user = User.create(username, password)
