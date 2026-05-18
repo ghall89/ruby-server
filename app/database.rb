@@ -17,3 +17,14 @@ DB.execute(<<~SQL)
     remember_token TEXT
   )
 SQL
+
+DB.execute(<<~SQL)
+  CREATE TABLE IF NOT EXISTS posts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatd_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    user_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL
+  )
+SQL
