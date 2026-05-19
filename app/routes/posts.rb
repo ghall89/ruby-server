@@ -24,7 +24,13 @@ class App
     post = Post.find(params[:id])
     halt 404 unless post
     poster = User.find(post.user_id)
-    erb :post, locals: { post: post, current_user: current_user, poster: poster }
+    replies = Reply.all_by_post_id(post.id)
+    erb :post, locals: {
+      post: post,
+      replies: replies,
+      current_user: current_user,
+      poster: poster
+    }
   end
 
   post "/posts" do

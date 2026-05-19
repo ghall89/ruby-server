@@ -32,7 +32,7 @@ class Post
   end
 
   def self.update(id, title, body)
-    DB.execute("UPDATE posts SET title = ?, body = ?, updated_at = CURRENT TIMESTAMP WHERE id = ?", [title, body, id])
+    DB.execute("UPDATE posts SET title = ?, body = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?", [title, body, id])
   end
 
   def self.delete(id)

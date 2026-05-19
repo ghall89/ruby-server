@@ -5,6 +5,7 @@ require "securerandom"
 require_relative "database"
 require_relative "models/user"
 require_relative "models/post"
+require_relative "models/reply"
 require_relative "helpers/auth"
 require_relative "helpers/view"
 

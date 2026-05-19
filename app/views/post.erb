@@ -16,4 +16,12 @@
   <p class="text-muted">by: <%= poster.username %></p>
   <p><%= post.body %></p>
   <a href="/posts" class="text-muted">← Back to posts</a>
+
+  <hr class="my-4" />
+  <h2 class="mb-3">Replies</h2>
+
+  <% if replies.empty? %>
+  <p class="text-muted">No replies!</p>
+  <% else %> <% replies.each do |node| %> <%= render_replies(node) %> <% end %>
+  <% end %>
 </section>
