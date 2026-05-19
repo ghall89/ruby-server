@@ -28,3 +28,15 @@ DB.execute(<<~SQL)
     body TEXT NOT NULL
   )
 SQL
+
+DB.execute(<<~SQL)
+  CREATE TABLE IF NOT EXISTS replies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatd_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    user_id INTEGER NOT NULL,
+    post_id INTEGER NOT NULL,
+    parent_reply_id INTEGER,
+    body TEXT NOT NULL
+  )
+SQL
