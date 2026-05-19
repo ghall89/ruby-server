@@ -19,6 +19,7 @@
 
   <hr class="my-4" />
   <h2 class="mb-3">Replies</h2>
+  <%= partial :_reply_form, { post_id: post.id, parent_id: nil } %>
 
   <% if replies.empty? %>
   <p class="text-muted">No replies!</p>
