@@ -6,6 +6,7 @@ require_relative "database"
 require_relative "models/user"
 require_relative "models/post"
 require_relative "helpers/auth"
+require_relative "helpers/view"
 
 class App < Sinatra::Base
   configure do
@@ -13,7 +14,7 @@ class App < Sinatra::Base
     set :session_secret, ENV.fetch("SESSION_SECRET") { SecureRandom.hex(64) }
   end
 
-  helpers AuthHelpers
+  helpers AuthHelpers, ViewHelpers
 end
 
 require_relative "routes/main"

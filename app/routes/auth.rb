@@ -16,11 +16,11 @@ class App
         token = SecureRandom.hex(32)
         user.save_remember_token(token)
         response.set_cookie("remember_token", {
-          value: token,
-          expires: Time.now + (30 * 24 * 60 * 60),
-          httponly: true,
-          path: "/"
-        })
+                              value: token,
+                              expires: Time.now + (30 * 24 * 60 * 60),
+                              httponly: true,
+                              path: "/"
+                            })
       end
 
       redirect "/"
@@ -38,17 +38,11 @@ class App
     username = params[:username].to_s.strip
     password = params[:password].to_s
 
-    if username.empty? || password.empty?
-      return erb :signup, locals: { error: "Username and password are required" }
-    end
+    return erb :signup, locals: { error: "Username and password are required" } if username.empty? || password.empty?
 
-    if password.length < 8
-      return erb :signup, locals: { error: "Password must be at least 8 characters" }
-    end
+    return erb :signup, locals: { error: "Password must be at least 8 characters" } if password.length < 8
 
-    if User.find_by_username(username)
-      return erb :signup, locals: { error: "Username already taken" }
-    end
+    return erb :signup, locals: { error: "Username already taken" } if User.find_by_username(username)
 
     user = User.create(username, password)
     session[:user_id] = user.id

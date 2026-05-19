@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Post
-  attr_reader :id, :user_id, :body
+  attr_reader :id, :user_id, :title, :body
 
   def initialize(row)
     @id = row["id"]
@@ -12,7 +12,7 @@ class Post
     @body = row["body"]
   end
 
-  def self.all()
+  def self.all
     DB.execute("SELECT * FROM posts").map { |row| new(row) }
   end
 
@@ -26,7 +26,7 @@ class Post
   end
 
   def self.create(user_id, title, body)
-    DB.execute("INSERT INTO posts (user_id, title, body) VALUES (?, ?, ?)", [user_id,title, body])
+    DB.execute("INSERT INTO posts (user_id, title, body) VALUES (?, ?, ?)", [user_id, title, body])
     new_id = DB.last_insert_row_id
     find(new_id)
   end

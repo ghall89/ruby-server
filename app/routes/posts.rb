@@ -3,7 +3,7 @@
 class App
   get "/posts" do
     require_auth
-    posts = Post.all()
+    posts = Post.all_by_user_id(current_user.id)
     erb :posts, locals: { posts: posts }
   end
 
@@ -29,7 +29,7 @@ class App
 
   post "/posts" do
     require_auth
-    post = Post.create(current_user.id, params[:body])
+    post = Post.create(current_user.id, params[:title], params[:body])
     redirect "/posts/#{post.id}"
   end
 

@@ -3,6 +3,7 @@
 class App
   get "/" do
     require_auth
-    erb :index, locals: { username: current_user.username }
+    posts = Post.all
+    erb :index, locals: { posts: posts }
   end
 end

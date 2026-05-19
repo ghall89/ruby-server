@@ -4,3 +4,7 @@ tasks:
   start:
     desc: "Start server"
     cmd: "bundle exec rackup"
+
+  fix:
+    desc: "Fix with Rubocop"
+    cmd: "rubocop -a"
