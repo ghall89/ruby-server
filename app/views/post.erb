@@ -26,3 +26,15 @@
   <% else %> <% replies.each do |node| %> <%= render_replies(node) %> <% end %>
   <% end %>
 </section>
+
+<script>
+  document.addEventListener("click", function (e) {
+    if (!e.target.matches("[data-reply-toggle]")) return;
+    const id = e.target.dataset.replyToggle;
+    const target = document.getElementById("reply-form-" + id);
+    document.querySelectorAll("[id^='reply-form-']").forEach(function (el) {
+      if (el !== target) el.classList.add("d-none");
+    });
+    target.classList.toggle("d-none");
+  });
+</script>
