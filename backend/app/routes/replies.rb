@@ -2,20 +2,19 @@
 
 class App
   post "/replies" do
-    require_auth
-    reply = Reply.create(current_user.id, params[:post_id], params[:parent_id].empty? ? nil : params[:parent_id], params[:body])
-    redirect "/posts/#{reply.post_id}"
+    reply = Reply.create(current_user.id, params[:post_id], params[:parent_id].to_s.empty? ? nil : params[:parent_id], params[:body])
+    halt 201, reply.to_h.to_json
   end
 
   patch "/replies/:id" do
     require_auth
     Reply.update(params[:id], params[:body])
-    redirect "/replies/#{params[:id]}"
+    Reply.find(params[:id]).to_h.to_json
   end
 
   delete "/replies/:id" do
     require_auth
     Reply.delete(params[:id])
-    redirect "/replies"
+    status 204
   end
 end

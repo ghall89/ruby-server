@@ -15,6 +15,6 @@ module AuthHelpers
   end
 
   def require_auth
-    redirect "/login" unless current_user
+    halt 401, { error: "Unauthorized" }.to_json unless current_user
   end
 end

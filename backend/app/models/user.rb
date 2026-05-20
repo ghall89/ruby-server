@@ -45,4 +45,8 @@ class User
   def clear_remember_token
     DB.execute("UPDATE users SET remember_token = NULL WHERE id = ?", @id)
   end
+
+  def to_h
+    { id: @id, username: @username }
+  end
 end

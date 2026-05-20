@@ -21,7 +21,6 @@ class App < Sinatra::Base
   helpers AuthHelpers
 end
 
-require_relative "routes/main"
 require_relative "routes/auth"
 require_relative "routes/posts"
 require_relative "routes/replies"

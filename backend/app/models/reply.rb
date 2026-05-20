@@ -53,9 +53,12 @@ class Reply
   end
 
   def self.nest(items, parent_id = nil)
-    puts items.map { |i| "id: #{i.id.class}, parent_id: #{i.parent_id.class}" }
     items
       .select { |i| i.parent_id == parent_id }
-      .map { |i| { item: i, children: nest(items, i.id) } }
+      .map { |i| { **i.to_h, children: nest(items, i.id) } }
+  end
+
+  def to_h
+    { id: @id, user_id: @user_id, post_id: @post_id, parent_id: @parent_id, body: @body }
   end
 end

@@ -38,4 +38,8 @@ class Post
   def self.delete(id)
     DB.execute("DELETE FROM posts WHERE id = ?", [id])
   end
+
+  def to_h
+    { id: @id, user_id: @user_id, title: @title, body: @body }
+  end
 end
