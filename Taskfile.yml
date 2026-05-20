@@ -1,10 +1,14 @@
 version: "3"
 
 tasks:
-  start:
-    desc: "Start server"
-    cmd: "bundle exec rackup"
+  dev:
+    desc: "Start backend and frontend"
+    deps: [backend, frontend]
 
-  fix:
-    desc: "Fix with Rubocop"
-    cmd: "rubocop -a"
+  backend:
+    dir: backend
+    cmd: bundle exec rackup
+
+  frontend:
+    dir: frontend
+    cmd: pnpm dev
