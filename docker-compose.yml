@@ -1,0 +1,28 @@
+services:
+  server:
+    build:
+      context: ./apps/server
+    ports:
+      - "9292:8080"
+    volumes:
+      - ./apps/server:/app:cached
+      - db_data:/app/data
+    environment:
+      - PORT=8080
+      - RACK_ENV=development
+      - DATABASE_PATH=/app/data/app.db
+
+  client:
+    build:
+      context: ./apps/client
+      args:
+        - PUBLIC_API_URL=http://server:8080
+    ports:
+      - "3000:3000"
+    environment:
+      - PUBLIC_API_URL=http://server:8080
+    depends_on:
+      - server
+
+volumes:
+  db_data:
