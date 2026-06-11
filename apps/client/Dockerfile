@@ -20,6 +20,6 @@ ENV HOST=0.0.0.0
 
 COPY --from=builder /app/build ./build
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD ["node", "build"]

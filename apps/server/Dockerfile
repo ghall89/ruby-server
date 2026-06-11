@@ -14,6 +14,6 @@ RUN gem install bundler && bundle install --jobs 4 --retry 3
 COPY . .
 
 ENV RACK_ENV=production
-EXPOSE 8000
+EXPOSE 8080
 
-CMD ["bundle", "exec", "rackup"]
+CMD ["bundle", "exec", "rackup", "-o", "0.0.0.0", "-p", "8080"]

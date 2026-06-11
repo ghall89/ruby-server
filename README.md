@@ -13,8 +13,8 @@ A simple forum app with a Ruby/Sinatra backend and a SvelteKit frontend.
 docker compose up --build
 ```
 
-- Backend: http://localhost:3000
-- Frontend: http://localhost:8000
+- Backend: http://localhost:9292
+- Frontend: http://localhost:3000
 
 The SQLite database is stored in a Docker volume (`db_data`) so it persists across container restarts and rebuilds.
 
